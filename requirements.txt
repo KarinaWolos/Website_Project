@@ -2,3 +2,4 @@ Django
 psycopg2-binary
 pytz
 pytest
+django-phone-field

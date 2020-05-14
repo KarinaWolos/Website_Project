@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from phone_field import PhoneField
 
 
 # Create your models here.
@@ -14,7 +15,8 @@ class Category(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=128, verbose_name='Nazwa firmy')
-    rating = models.DecimalField(decimal_places=1, verbose_name='Ocena')
+    rating = models.FloatField()
     address = models.CharField(max_length=128, verbose_name='Adres firmy')
     website = models.URLField(max_length=200, verbose_name='Strona internetowa')
-    phone = models.CharField(max_length=12, verbose_name='Numer telefonu')
+    phone = PhoneField(blank=True, help_text='Numer kontaktowy', verbose_name='Numer telefonu')
+    category = models.ManyToManyField(Category)

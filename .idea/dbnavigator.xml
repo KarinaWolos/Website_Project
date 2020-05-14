@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -25,7 +25,8 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="9554d885-c768-43f9-a86e-1b9d355491e3">
-        <schema name="public" object-types="view, table, function, sequence" />
+        <schema name="pg_catalog" object-types="function" />
+        <schema name="public" object-types="function, column, sequence, index, table, dataset trigger, view, constraint" />
       </connection>
     </loaded-nodes>
   </component>
@@ -35,10 +36,17 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="9554d885-c768-43f9-a86e-1b9d355491e3" object-ref="schemas/public/tables/companyapp_company_category" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="9554d885-c768-43f9-a86e-1b9d355491e3" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="9554d885-c768-43f9-a86e-1b9d355491e3" dataset="public.companyapp_category" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="9554d885-c768-43f9-a86e-1b9d355491e3" dataset="public.companyapp_company_category" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="9554d885-c768-43f9-a86e-1b9d355491e3" dataset="public.companyapp_company" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
