@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+Dodaj kategorie: <hr/>
+    <form method="post">
+        <div class="form-group">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit" class="btn btn-default">Dodaj</button>
+        </div>
+    </form><hr/>
+
+
+{% endblock %}

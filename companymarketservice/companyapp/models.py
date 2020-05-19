@@ -7,7 +7,7 @@ from phone_field import PhoneField
 # Create your models here.
 
 class Category(models.Model):
-    name = models.CharField(max_length=128, verbose_name='Nazwa kategorii')
+    name = models.CharField(max_length=128, verbose_name='Kategoria')
 
     def __str__(self):
         return self.name
@@ -18,5 +18,5 @@ class Company(models.Model):
     rating = models.FloatField()
     address = models.CharField(max_length=128, verbose_name='Adres firmy')
     website = models.URLField(max_length=200, verbose_name='Strona internetowa')
-    phone = PhoneField(blank=True, help_text='Numer kontaktowy', verbose_name='Numer telefonu')
-    category = models.ManyToManyField(Category)
+    phone = PhoneField(blank=True, verbose_name='Numer telefonu')
+    category = models.ManyToManyField(Category, verbose_name='Kategoria')

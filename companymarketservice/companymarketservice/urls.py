@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url
 from django.urls import path
 from django.contrib import admin
-from serviceapp.views import MainView
+from serviceapp.views import MainView, AddCompanyView, AddCategoryView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', MainView.as_view(), name='main')
+    path('', MainView.as_view(), name='main'),
+    path('add_company', AddCompanyView.as_view(), name='add-company'),
+    path('add_category', AddCategoryView.as_view(), name='add-category')
 
 ]
