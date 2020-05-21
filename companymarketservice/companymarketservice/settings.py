@@ -38,9 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phone_field',
+    'crispy_forms',
     'serviceapp',
     'companyapp'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+STATIC_URL = '/static/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Nazwa firmy</th>
+            <th>Lokalizacja</th>
+        </tr>
+            {% for i in companies %}
+            <tr>
+                <td><a href="{% url 'company-detail' i.id %}">{{i.name}}</a></td>
+                <td>{{i.address}}</td>
+            </tr>
+            {% endfor %}
+    </table>
+
+
+
+
+{% endblock %}

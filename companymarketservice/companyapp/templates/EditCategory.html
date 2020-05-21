@@ -3,10 +3,15 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+
     <form method="post">
         {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Dodaj</button>
+        {{ form.name|as_crispy_field}}
+        <button type="submit" class="btn btn-primary">Edytuj</button>
     </form><hr/>
+
+
+
+
 
 {% endblock %}

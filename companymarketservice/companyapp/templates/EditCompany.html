@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.name|as_crispy_field}}
+        {{ form.rating|as_crispy_field}}
+        {{ form.address|as_crispy_field}}
+        {{ form.website|as_crispy_field}}
+        {{ form.phone|as_crispy_field}}
+        {{ form.category|as_crispy_field}}
+        <button type="submit" class="btn btn-primary">Edytuj</button>
+    </form><hr/>
+
+{% endblock %}

@@ -17,11 +17,18 @@ from django.conf.urls import url
 from django.urls import path
 from django.contrib import admin
 from serviceapp.views import MainView, AddCompanyView, AddCategoryView
+from serviceapp.views import EditCategoryView, EditCompanyView, CategoryView, CompanyView
+from serviceapp.views import CompanyDetailsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MainView.as_view(), name='main'),
     path('add_company', AddCompanyView.as_view(), name='add-company'),
-    path('add_category', AddCategoryView.as_view(), name='add-category')
+    path('add_category', AddCategoryView.as_view(), name='add-category'),
+    path('edit_category/<int:pk>', EditCategoryView.as_view(), name='edit-category'),
+    path('edit_company/<int:pk>', EditCompanyView.as_view(), name='edit-company'),
+    path('categories', CategoryView.as_view(), name='categories'),
+    path('companies/<int:id>', CompanyView.as_view(), name='companies'),
+    path('companydetails/<int:id>', CompanyDetailsView.as_view(), name='company-detail')
 
 ]

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="mapid"></div>
+    <script>
+      var mymap = L.map('mapid').setView([52.237049, 21.017532], 13);
+
+      L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=VyOXGAe7beatUHdhkgdy',
+      { attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'your.mapbox.access.token'}).addTo(mymap);
+
+      var marker = L.marker([52.237049, 21.017532]).addTo(mymap)
+    </script>
+
+
+{% endblock %}

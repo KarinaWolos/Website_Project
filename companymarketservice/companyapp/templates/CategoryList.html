@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<ul class="list-unstyled">
+
+ {% for i in categories %}
+  <li class="media">
+    <img class="mr-3" src="{% static 'images/settings-setting-edit-configure-gear-24826.ico' %}" alt="Generic placeholder image">
+    <div class="media-body">
+        <h5 class="mt-0 mb-1"><br><a href="{% url 'companies' i.id %}">{{i.name}}</a></h5>
+    </div>
+  </li>
+ {% endfor %}
+
+
+
+
+{% endblock %}
