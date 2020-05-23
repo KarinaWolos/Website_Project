@@ -19,6 +19,8 @@ from django.contrib import admin
 from serviceapp.views import MainView, AddCompanyView, AddCategoryView
 from serviceapp.views import EditCategoryView, EditCompanyView, CategoryView, CompanyView
 from serviceapp.views import CompanyDetailsView
+from serviceapp.views import LogView, SignUpView, LogOutView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +31,9 @@ urlpatterns = [
     path('edit_company/<int:pk>', EditCompanyView.as_view(), name='edit-company'),
     path('categories', CategoryView.as_view(), name='categories'),
     path('companies/<int:id>', CompanyView.as_view(), name='companies'),
-    path('companydetails/<int:id>', CompanyDetailsView.as_view(), name='company-detail')
+    path('companydetails/<int:id>', CompanyDetailsView.as_view(), name='company-detail'),
+    path('login', LogView.as_view(), name='login'),
+    path('signup', SignUpView.as_view(), name='signup'),
+    path('logout', LogOutView.as_view(), name='logout')
 
 ]

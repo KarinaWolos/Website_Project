@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% if request.GET.loginFaild %}
+        <div>Błąd logowania!</div>
+    {% endif %}
+<h2> Zaloguj się :</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" class="btn btn-primary" value="Zaloguj">
+    </form>
+{% endblock %}

@@ -13,7 +13,25 @@
         zoomOffset: -1,
         accessToken: 'your.mapbox.access.token'}).addTo(mymap);
 
-      var marker = L.marker([52.237049, 21.017532]).addTo(mymap)
+      // var marker = L.marker([52.237049, 21.017532]).addTo(mymap)
+      //
+      //
+
+        mymap.locate({setView: true, watch: true, maxZoom: 17});
+        mymap.on('locationfound', onLocationFound);
+
+        var marker;
+        map.on('locationfound', function(ev){
+        if (!marker) {
+            marker = L.marker(ev.latlng);
+        } else {
+            marker.setLatLng(ev.latlng);
+        }
+
+        marker.addTo(mymap);
+})
+
+
     </script>
 
 
