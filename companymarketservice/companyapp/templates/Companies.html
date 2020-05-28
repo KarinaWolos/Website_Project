@@ -12,7 +12,7 @@
             {% for i in companies %}
             <tr>
                 <td><a href="{% url 'company-detail' i.id %}">{{i.name}}</a></td>
-                <td>{{i.address}}</td>
+                <td>{{i.street}}, {{i.city}}</td>
             </tr>
             {% endfor %}
     </table>

@@ -3,7 +3,7 @@
 {% block content %}
 <div id="mapid"></div>
     <script>
-      var mymap = L.map('mapid').setView([52.237049, 21.017532], 13);
+      var mymap = L.map('mapid').setView([52.237049, 21.017532], 11);
 
       L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=VyOXGAe7beatUHdhkgdy',
       { attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
@@ -13,23 +13,17 @@
         zoomOffset: -1,
         accessToken: 'your.mapbox.access.token'}).addTo(mymap);
 
-      // var marker = L.marker([52.237049, 21.017532]).addTo(mymap)
-      //
-      //
+      {% for i in companies %}
+
+      var marker = L.marker([{{i.y_value}}, {{i.x_value}}]).addTo(mymap);
+      marker.bindPopup("<b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}}<br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a>").openPopup()
+
+      {% endfor %}
+
+
 
         mymap.locate({setView: true, watch: true, maxZoom: 17});
         mymap.on('locationfound', onLocationFound);
-
-        var marker;
-        map.on('locationfound', function(ev){
-        if (!marker) {
-            marker = L.marker(ev.latlng);
-        } else {
-            marker.setLatLng(ev.latlng);
-        }
-
-        marker.addTo(mymap);
-})
 
 
     </script>

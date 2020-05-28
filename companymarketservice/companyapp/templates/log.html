@@ -4,9 +4,11 @@
 
 {% block content %}
     {% if request.GET.loginFaild %}
-        <div>Błąd logowania!</div>
+    <br><div class="alert alert-danger" role="alert">
+        Błąd logowania!
+    </div>
     {% endif %}
-<h2> Zaloguj się :</h2>
+<br><h3> Zaloguj się :</h3>
     <form method="post">
         {% csrf_token %}
         {{form|crispy}}

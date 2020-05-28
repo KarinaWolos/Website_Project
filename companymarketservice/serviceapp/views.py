@@ -15,6 +15,12 @@ from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMix
 class MainView(TemplateView):
     template_name = 'main.html'
 
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data()
+        companies = Company.objects.all()
+        ctx['companies'] = companies
+        return ctx
+
 
 class AddCompanyView(LoginRequiredMixin, CreateView):
     form_class = AddCompany
@@ -26,7 +32,7 @@ class EditCompanyView(PermissionRequiredMixin, UpdateView):
     permission_required = 'companyapp.change_company'
     permission_denied_message = 'Nie posiadasz wystarczających uprawnień!'
     model = Company
-    fields = '__all__'
+    fields = ('name', 'rating', 'street', 'city', 'website', 'phone', 'category')
     template_name = 'EditCompany.html'
     success_url = ('/add_company')
 

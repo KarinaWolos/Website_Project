@@ -3,12 +3,18 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<!--    {% if request.GET.403 %}-->
+<!--    <br><div class="alert alert-danger" role="alert">-->
+<!--        Błąd logowania!-->
+<!--    </div>-->
+<!--    {% endif %}-->
 
-    <form method="post">
+    <br><form method="post">
         {% csrf_token %}
         {{ form.name|as_crispy_field}}
         {{ form.rating|as_crispy_field}}
-        {{ form.address|as_crispy_field}}
+        {{ form.street|as_crispy_field}}
+        {{ form.city|as_crispy_field}}
         {{ form.website|as_crispy_field}}
         {{ form.phone|as_crispy_field}}
         {{ form.category|as_crispy_field}}

@@ -10,7 +10,7 @@ class AddCompany(forms.ModelForm):
     rating = forms.DecimalField(min_value=0, max_value=5, decimal_places=1)
     class Meta:
         model = Company
-        fields = '__all__'
+        fields = ('name', 'rating', 'street', 'city', 'website', 'phone', 'category')
 
 
 class LogForm(forms.Form):
