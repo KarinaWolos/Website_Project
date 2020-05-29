@@ -3,7 +3,7 @@
 {% block content %}
 <div id="mapid"></div>
     <script>
-      var mymap = L.map('mapid').setView([52.237049, 21.017532], 11);
+      var mymap = L.map('mapid').setView([52.237049, 21.017532], 10);
 
       L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=VyOXGAe7beatUHdhkgdy',
       { attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
@@ -16,7 +16,7 @@
       {% for i in companies %}
 
       var marker = L.marker([{{i.y_value}}, {{i.x_value}}]).addTo(mymap);
-      marker.bindPopup("<b>Branża: </b>{{i.category}}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}}<br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a>").openPopup()
+      marker.bindPopup("<b>Branża: </b>{% for category in companies.category %}{{category.name}}{% endfor %}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}}<br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a>").openPopup()
 
       {% endfor %}
 

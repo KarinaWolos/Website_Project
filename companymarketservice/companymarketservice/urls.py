@@ -19,7 +19,7 @@ from django.contrib import admin
 from serviceapp.views import MainView, AddCompanyView, AddCategoryView
 from serviceapp.views import EditCategoryView, EditCompanyView, CategoryView, CompanyView
 from serviceapp.views import CompanyDetailsView
-from serviceapp.views import LogView, SignUpView, LogOutView
+from serviceapp.views import LogView, SignUpView, LogOutView, ShowOnMapView
 
 
 urlpatterns = [
@@ -34,6 +34,7 @@ urlpatterns = [
     path('companydetails/<int:id>', CompanyDetailsView.as_view(), name='company-detail'),
     path('login', LogView.as_view(), name='login'),
     path('signup', SignUpView.as_view(), name='signup'),
-    path('logout', LogOutView.as_view(), name='logout')
+    path('logout', LogOutView.as_view(), name='logout'),
+    path('show_on_map', ShowOnMapView.as_view(), name='show-on-map')
 
 ]
