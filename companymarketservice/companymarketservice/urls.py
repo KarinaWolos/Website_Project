@@ -35,6 +35,6 @@ urlpatterns = [
     path('login', LogView.as_view(), name='login'),
     path('signup', SignUpView.as_view(), name='signup'),
     path('logout', LogOutView.as_view(), name='logout'),
-    path('show_on_map', ShowOnMapView.as_view(), name='show-on-map')
+    path('show_on_map/<int:id>', ShowOnMapView.as_view(), name='show-on-map')
 
 ]

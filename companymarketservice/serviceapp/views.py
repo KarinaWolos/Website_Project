@@ -1,6 +1,5 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect
+from django.shortcuts import render, HttpResponseRedirect
 from django.views import View
-from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, CreateView, UpdateView
 from django.views.generic.edit import FormView
 from companyapp.models import Company, Category
@@ -120,9 +119,8 @@ class LogOutView(RedirectView):
         return '/'
 
 
-class ShowOnMapView(RedirectView):
-    permanent = False
-
-    def get_redirect_url(self, *args, **kwargs):
-        # company = get_object_or_404(Company, pk=kwargs['pk'])
-        return '/'
+class ShowOnMapView(View):
+    def get(self, request, id):
+        company = Company.objects.filter(id=id)
+        ctx = {'company': company}
+        return render(request, 'CompanyOnMap.html', ctx)

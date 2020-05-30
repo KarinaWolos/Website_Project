@@ -15,7 +15,7 @@
             <tr>
                 <td><a href="{% url 'company-detail' i.id %}">{{i.name}}</a></td>
                 <td>{{i.street}}, {{i.city}}</td>
-                <td><a href="{% url 'show-on-map' %}">Pokaż na mapie</a></td>
+                <td><a href="{% url 'show-on-map' i.id %}">Pokaż na mapie</a></td>
             </tr>
             {% endfor %}
     </table>
