@@ -130,7 +130,8 @@ class ShowOnMapView(View):
 from decimal import Decimal
 
 
-class UpdateRatingView(View):
+class UpdateRatingView(PermissionRequiredMixin, View):
+    permission_required = 'companyapp.update_rating'
     def get(self, request, id):
         form = UpdateRating()
         return render(request, 'UpdateRating.html', {'form': form})

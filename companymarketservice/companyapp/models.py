@@ -26,6 +26,9 @@ class Company(models.Model):
     phone = PhoneNumberField(blank=True, verbose_name='Numer telefonu')
     category = models.ManyToManyField(Category, verbose_name='Kategoria')
 
+    class Meta:
+        permissions = [('update_rating', 'Can update rating')]
+
     @property
     def x_value(self):
         return "{}".format(self.x)
