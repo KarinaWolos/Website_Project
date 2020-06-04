@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phone_field',
     'crispy_forms',
-    'serviceapp',
     'companyapp',
     'rest_framework'
 ]

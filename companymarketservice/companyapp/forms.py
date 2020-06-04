@@ -8,6 +8,7 @@ from companyapp.models import Company
 
 class AddCompany(forms.ModelForm):
     rating = forms.DecimalField(min_value=0, max_value=5, decimal_places=1)
+
     class Meta:
         model = Company
         fields = ('name', 'rating', 'street', 'city', 'website', 'phone', 'category')
@@ -32,3 +33,10 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
+
+
+class UpdateRating(forms.ModelForm):
+    rating = forms.DecimalField(min_value=0, max_value=5, decimal_places=1)
+    class Meta:
+        model = Company
+        fields = ('rating',)

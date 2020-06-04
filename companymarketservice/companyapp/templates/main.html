@@ -16,7 +16,7 @@
       {% for i in companies %}
 
       var marker = L.marker([{{i.y_value}}, {{i.x_value}}]).addTo(mymap);
-      marker.bindPopup("<b>Branża: </b>{% for category in i.category.all %}{{category.name}}{% endfor %}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}}<br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a>").openPopup()
+      marker.bindPopup("<b>Branża: </b>{% for category in i.category.all %}{{category.name}}{% endfor %}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}}<br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a><b><a href='{% url 'add-rating' i.id %}'> Wystaw ocenę </a></b>")
 
       {% endfor %}
 
