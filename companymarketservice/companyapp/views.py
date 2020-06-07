@@ -7,6 +7,7 @@ from companyapp.forms import LogForm, SignUpForm, AddCompany, UpdateRating
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from statistics import mean
+from django.contrib import messages
 from django.views.generic import RedirectView
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 
@@ -91,8 +92,8 @@ class LogView(FormView):
         password = form.cleaned_data['password']
         user = authenticate(username=username, password=password)
         if user is not None:
-            print("Zautentykowano, logowanie", user)
             login(self.request, user)
+            messages.success(self.request, f'Zalogowano jako {username}')
             return HttpResponseRedirect('/')
         else:
             print("Nie udało sie zautentykować")
@@ -117,6 +118,7 @@ class LogOutView(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
         logout(self.request)
+        messages.success(self.request, 'Wylogowano poprawnie')
         return '/'
 
 
@@ -132,6 +134,7 @@ from decimal import Decimal
 
 class UpdateRatingView(PermissionRequiredMixin, View):
     permission_required = 'companyapp.update_rating'
+
     def get(self, request, id):
         form = UpdateRating()
         return render(request, 'UpdateRating.html', {'form': form})
@@ -145,5 +148,5 @@ class UpdateRatingView(PermissionRequiredMixin, View):
             total_rating = mean([new_rating, rating])
             company.rating = total_rating
             company.save()
-            print(f'Wystawiono ocenę {new_rating}')
+            messages.success(request, f'Wystawiono ocenę {new_rating}')
         return HttpResponseRedirect('/')

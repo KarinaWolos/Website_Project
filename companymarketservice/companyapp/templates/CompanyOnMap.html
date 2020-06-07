@@ -17,13 +17,13 @@
       {% for i in company%}
 
       var marker = L.marker([{{i.y_value}}, {{i.x_value}}]).addTo(mymap);
-      marker.bindPopup("<b>Branża: </b>{% for category in i.category.all %}{{category.name}}{% endfor %}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}}<br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a>").openPopup()
+      marker.bindPopup("<b>Branża: </b>{% for category in i.category.all %}{{category.name}}{% endfor %}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}} <span class=\"fa fa-star {% if i.rating >= 1 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 2 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 3 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 4 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 5 %}checked{% endif %}\"></span><br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a>").openPopup()
 
       {% endfor %}
 
 
 
-        mymap.locate({setView: true, watch: true, maxZoom: 17});
+        mymap.locate({setView: true, watch: true, maxZoom: 7});
         mymap.on('locationfound', onLocationFound);
 
 

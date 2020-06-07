@@ -3,7 +3,19 @@
 {% block content %}
 <div id="mapid"></div>
     <script>
-      var mymap = L.map('mapid').setView([52.237049, 21.017532], 10);
+        window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+            });
+        }, 2000);
+
+        var mymap = L.map('mapid').setView([52.237049, 21.017532], 13);
+
+      mymap.on('click', function (e) {
+            $('.star').rating({displayOnly: true, step: 0.5});
+            console.log('add');
+
+      } );
 
       L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=VyOXGAe7beatUHdhkgdy',
       { attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
@@ -16,15 +28,15 @@
       {% for i in companies %}
 
       var marker = L.marker([{{i.y_value}}, {{i.x_value}}]).addTo(mymap);
-      marker.bindPopup("<b>Branża: </b>{% for category in i.category.all %}{{category.name}}{% endfor %}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: </b>{{i.rating}}<br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a><b><a href='{% url 'add-rating' i.id %}'> Wystaw ocenę </a></b>")
+      marker.bindPopup("<b>Branża: </b>{% for category in i.category.all %}{{category.name}}{% endfor %}<br><b>Firma: </b>{{i.name}}<br><b>Ocena: " +
+          "</b>{{i.rating}} <span class=\"fa fa-star {% if i.rating >= 1 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 2 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 3 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 4 %}checked{% endif %}\"></span><span class=\"fa fa-star {% if i.rating >= 5 %}checked{% endif %}\"></span><br><b>Strona www: </b><a href='{{i.website}}'>{{i.website}}</a><b><a href='{% url 'add-rating' i.id %}'> Wystaw ocenę </a></b>")
 
       {% endfor %}
 
-
-
-        mymap.locate({setView: true, watch: true, maxZoom: 17});
-        mymap.on('locationfound', onLocationFound);
-
+    function locateUser(){
+        mymap.locate({setView : true, maxZoom: 8});
+    }
+    locateUser()
 
     </script>
 
